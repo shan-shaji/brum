@@ -17,7 +17,14 @@ const handleFlutter = (files) => {
   }
 }
 
-const handleNodejs = (files) => {}
+const handleNodejs = (files) => {
+  if (files.includes('package.json')) {
+    console.log(process.cwd())
+    // Todo: Delete node_modules
+  } else {
+    // Todo: node_modules
+  }
+}
 
 export const clean = async (folderName) => {
   showIntroduction()

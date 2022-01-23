@@ -1,6 +1,6 @@
 {
   "name": "brum",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "CLI to get me more space :)",
   "main": "src/index.js",
   "bin": {
