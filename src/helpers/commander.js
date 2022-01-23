@@ -1,7 +1,5 @@
-'use strict'
+"use strict";
 
-const { Command } = require('commander')
+import { Command } from "commander";
 
-const program = new Command()
-
-module.exports = program
+export const program = new Command();
