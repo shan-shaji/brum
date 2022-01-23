@@ -1,1 +1,5 @@
-console.log('Hello Ample')
+'use strict'
+
+const program = require('./helpers/commander')
+
+

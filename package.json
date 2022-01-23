@@ -1,24 +1,24 @@
 {
-  "name": "ample",
+  "name": "broomit",
   "version": "1.0.0",
   "description": "CLI to get me more space :)",
   "main": "src/index.js",
   "bin": {
-    "ample": "bin/cli.js"
+    "broomit": "bin/cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shan-shaji/ample.git"
+    "url": "git+https://github.com/shan-shaji/broomit.git"
   },
   "author": "Shan Shaji",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shan-shaji/ample/issues"
+    "url": "https://github.com/shan-shaji/broomit.git/issues"
   },
-  "homepage": "https://github.com/shan-shaji/ample#readme",
+  "homepage": "https://github.com/shan-shaji/broomit.git#readme",
   "dependencies": {
     "commander": "^8.3.0"
   }
