@@ -3,8 +3,11 @@
 import path from 'path'
 import fs from 'fs'
 import { error, info, warn } from '../../utils/logger'
+import { showIntroduction } from '../../utils/intro'
 
 export const clean = async (folderName) => {
+  showIntroduction()
+
   const argument = process.argv[4]
   let isCurrentDir = false
 

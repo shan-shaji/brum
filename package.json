@@ -1,28 +1,29 @@
 {
-  "name": "mopoff",
+  "name": "brum",
   "version": "1.0.0",
   "description": "CLI to get me more space :)",
   "main": "src/index.js",
   "bin": {
-    "mopoff": "bin/cli.js"
+    "brum": "bin/cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shan-shaji/mopoff.git"
+    "url": "git+https://github.com/shan-shaji/brum.git"
   },
   "author": "Shan Shaji",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shan-shaji/mopoff.git/issues"
+    "url": "https://github.com/shan-shaji/brum.git/issues"
   },
-  "homepage": "https://github.com/shan-shaji/mopoff.git#readme",
+  "homepage": "https://github.com/shan-shaji/brum.git#readme",
   "dependencies": {
     "chalk": "^4.1.2",
     "commander": "^8.3.0",
     "esm": "^3.2.25",
+    "execa": "^6.0.0",
     "figlet": "^1.5.2"
   },
   "files": [
