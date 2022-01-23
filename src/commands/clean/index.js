@@ -2,14 +2,28 @@
 
 import path from 'path'
 import fs from 'fs'
+
 import { error, info, warn } from '../../utils/logger'
 import { showIntroduction } from '../../utils/intro'
+import { chooseFolderType } from '../../helpers/PROMPT.JS'
+import { flutterText, nodeJs } from '../../constants/strings'
+
+const handleFlutter = (files) => {
+  if (files.includes('pubspec.yaml')) {
+    console.log(process.cwd())
+    // Todo: execute the flutter clean command
+  } else {
+    // Todo: execute the flutter clean command in all files in this folder
+  }
+}
+
+const handleNodejs = (files) => {}
 
 export const clean = async (folderName) => {
   showIntroduction()
 
-  const argument = process.argv[4]
   let isCurrentDir = false
+  let { folderType } = await chooseFolderType()
 
   if (folderName === '.') {
     isCurrentDir = true
@@ -21,10 +35,16 @@ export const clean = async (folderName) => {
     if (files.length == 0) {
       error('\n Error: No folders found in this directory')
       process.exit(1)
-    } else if (files.includes('pubspec.yaml')) {
-      // Todo: execute the flutter clean command
-    } else {
-      // Todo: execute the flutter clean command in all files in this folder
+    }
+
+    switch (folderType) {
+      case flutterText:
+        handleFlutter(files)
+        break
+      case nodeJs:
+        handleNodejs(files)
+      default:
+        break
     }
   }
 }
