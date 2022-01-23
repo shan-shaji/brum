@@ -1,3 +1,5 @@
+'use strict'
+
 import chalk from 'chalk'
 
 export const error = (msg) => console.error(chalk.red.bold(msg))

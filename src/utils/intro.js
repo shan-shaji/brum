@@ -13,6 +13,5 @@ export const showIntroduction = () => {
       whitespaceBreak: true,
     }),
   )
-
-  info(tagLine)
+  info(`     ${tagLine}`)
 }

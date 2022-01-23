@@ -1,5 +1,5 @@
-"use strict";
+'use strict'
 
-import { Command } from "commander";
+import { Command } from 'commander'
 
-export const program = new Command();
+export const program = new Command()
