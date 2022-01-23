@@ -7,11 +7,11 @@ import { error, info, warn } from '../../utils/logger'
 import { showIntroduction } from '../../utils/intro'
 import { chooseFolderType } from '../../helpers/PROMPT.JS'
 import { flutterText, nodeJs } from '../../constants/strings'
+import { executeFlutterClean } from '../../utils/execa'
 
-const handleFlutter = (files) => {
+const handleFlutter = async (files) => {
   if (files.includes('pubspec.yaml')) {
-    console.log(process.cwd())
-    // Todo: execute the flutter clean command
+    await executeFlutterClean()
   } else {
     // Todo: execute the flutter clean command in all files in this folder
   }
