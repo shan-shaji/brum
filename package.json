@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/shan-shaji/ample/issues"
   },
-  "homepage": "https://github.com/shan-shaji/ample#readme"
+  "homepage": "https://github.com/shan-shaji/ample#readme",
+  "dependencies": {
+    "commander": "^8.3.0"
+  }
 }
