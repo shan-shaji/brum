@@ -1,5 +1,5 @@
 {
-  "name": "broomit",
+  "name": "mopoff",
   "version": "1.0.0",
   "description": "CLI to get me more space :)",
   "main": "src/index.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shan-shaji/broomit.git"
+    "url": "git+https://github.com/shan-shaji/mopoff.git"
   },
   "author": "Shan Shaji",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shan-shaji/broomit.git/issues"
+    "url": "https://github.com/shan-shaji/mopoff.git/issues"
   },
-  "homepage": "https://github.com/shan-shaji/broomit.git#readme",
+  "homepage": "https://github.com/shan-shaji/mopoff.git#readme",
   "dependencies": {
     "commander": "^8.3.0"
   }
