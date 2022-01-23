@@ -20,9 +20,13 @@
   },
   "homepage": "https://github.com/shan-shaji/mopoff.git#readme",
   "dependencies": {
-    "chalk": "^5.0.0",
+    "chalk": "^4.1.2",
     "commander": "^8.3.0",
     "esm": "^3.2.25",
     "figlet": "^1.5.2"
-  }
+  },
+  "files": [
+    "bin/",
+    "src/"
+  ]
 }
