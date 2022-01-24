@@ -13,8 +13,8 @@ export const dirSize = async (directory, isAfter = false) => {
   let size = await getTotalSize(directory)
   let folderSize = `${(size / 1000 / 1000).toFixed(2)} MB`
   sizeString = isAfter
-    ? `   Updated size : ${chalk.green.bold(folderSize)}\n `
-    : `   Current size: ${chalk.red.bold(folderSize)}\n`
+    ? `   Updated size : ${chalk.green.bold(folderSize)}\n`
+    : `   Current size: ${chalk.red.bold(folderSize)}\n\n`
   spinner.stop()
   console.log(sizeString)
 }
