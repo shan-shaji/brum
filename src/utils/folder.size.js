@@ -19,9 +19,10 @@ export const dirSize = async (directory, isAfter = false) => {
   console.log(sizeString)
 }
 
-// Recursively iterates through all the files and folders in the specified directory
-// @dirPath - {string} The path of the directory
-// @arrayOfFiles - {string[]} List of file paths
+// Recursively iterates through all the files and folders in the specified directory.
+// @param {string} dirPath - The path of the directory.
+// @param {string[]} arrayOfFiles -  List of file paths.
+// @return {string[]} Returns an array of file paths.
 const getAllFiles = function (dirPath, arrayOfFiles) {
   let files = fs.readdirSync(dirPath)
   arrayOfFiles = arrayOfFiles || []
@@ -35,7 +36,8 @@ const getAllFiles = function (dirPath, arrayOfFiles) {
   return arrayOfFiles
 }
 
-// @directoryPath - {string} Path of the directory where space needs to be found
+// @param {string} directoryPath -  Path of the directory where space needs to be found.
+// @return {number} Retunrns the total size in bytes.
 const getTotalSize = async (directoryPath) => {
   const arrayOfFiles = getAllFiles(directoryPath)
   let totalSize = 0
