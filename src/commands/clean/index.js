@@ -4,12 +4,12 @@ import fs from 'fs'
 
 import { error } from '../../utils/logger'
 import { showIntroduction } from '../../utils/intro'
-import { chooseFolderType } from '../../helpers/PROMPT.JS'
+import { chooseFolderType } from '../../helpers/prompt'
 import { flutterText, nodeJs } from '../../constants/strings'
 import {
   runFlutterClean,
   runFlutterCleanOnMultipleFolders,
-} from '../../utils/flutter.clean'
+} from '../../helpers/flutter.clean'
 
 const handleFlutter = async (files) => {
   if (files.includes('pubspec.yaml')) {

@@ -1,12 +1,13 @@
 'use strict'
 
-const execa = require('execa')
+import execa from 'execa'
 import Listr from 'listr'
 import path from 'path'
 import fs from 'fs'
 
-import { warn, success, error } from './logger'
+import { warn, error } from '../utils/logger'
 import chalk from 'chalk'
+import { dirSize } from '../utils/folder.size'
 
 // Runs flutter clean command in the current directory
 export const runFlutterClean = async () => {
@@ -15,9 +16,9 @@ export const runFlutterClean = async () => {
       title: 'Running flutter clean',
       task: async () => {
         try {
-          await execa('flutter clean')
+          await execa('flutter', ['clean'])
         } catch (error) {
-          error('Failed to run flutter clean, Please try again')
+          console.log(error)
           throw Error(error)
         }
       },
@@ -42,12 +43,16 @@ export const runFlutterClean = async () => {
 }
 
 export const runFlutterCleanOnMultipleFolders = async (files) => {
+  let workingDir = process.cwd()
+
   // List of processes that need to be executed bu Listr
   let processList = []
 
+  let isManupulatedFolders = false
+
   files.forEach(async (folderName) => {
     // The relative path of the directory.
-    let dirPath = path.join(process.cwd(), folderName)
+    let dirPath = path.join(workingDir, folderName)
 
     // List of sub folders and files
     const subF = fs.readdirSync(dirPath)
@@ -61,7 +66,7 @@ export const runFlutterCleanOnMultipleFolders = async (files) => {
           title: `Cleaning ${chalk.green.bold(dirPath)}`,
           task: async () => {
             try {
-              await execa('flutter clean', { cwd: dirPath })
+              await execa('flutter', ['clean'], { cwd: dirPath })
             } catch (error) {
               throw Error(error)
             }
@@ -73,11 +78,15 @@ export const runFlutterCleanOnMultipleFolders = async (files) => {
   if (!processList.length) {
     warn("\nCouldn't find folders with build or .packages files\n")
   } else {
+    await dirSize(workingDir)
     let tasks = new Listr(processList)
     try {
       await tasks.run()
+      console.log('\n\n  ===============================')
     } catch (e) {
       error('\nFailed to clean files, please try again\n')
     }
+
+    await dirSize(workingDir, true)
   }
 }
