@@ -9,10 +9,17 @@ export const flutterClean = async () => {
   const tasks = new Listr([
     {
       title: 'Running flutter clean',
-      task: async () => {},
+      task: async () => {
+        try {
+          await execa('flutter clean')
+        } catch (error) {
+          error('Failed to run flutter clean, Please try again')
+          throw Error(error)
+        }
+      },
     },
     {
-      title: 'Completing task',
+      title: 'Cleaning Files',
       task: async () => {
         try {
           setTimeout(() => {}, 100)
