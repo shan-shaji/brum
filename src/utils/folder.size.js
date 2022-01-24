@@ -2,24 +2,20 @@ import chalk from 'chalk'
 import fs from 'fs'
 import Listr from 'listr'
 import path from 'path'
+import Spinner from './spinner'
 
 export const dirSize = async (directory, isAfter = false) => {
+  let spinner = new Spinner()
   console.log('\n')
   let sizeString = ''
-  let tasks = new Listr([
-    {
-      title: 'Calculating space',
-      task: async () => {
-        let size = await getTotalSize(directory)
-        let folderSize = `${(size / 1000 / 1000).toFixed(2)} MB`
-        sizeString = isAfter
-          ? `   Updated size : ${chalk.green.bold(folderSize)}\n `
-          : `   Current size: ${chalk.red.bold(folderSize)}\n`
-      },
-    },
-  ])
-
-  await tasks.run()
+  spinner.text = 'Calculating space'
+  spinner.start()
+  let size = await getTotalSize(directory)
+  let folderSize = `${(size / 1000 / 1000).toFixed(2)} MB`
+  sizeString = isAfter
+    ? `   Updated size : ${chalk.green.bold(folderSize)}\n `
+    : `   Current size: ${chalk.red.bold(folderSize)}\n`
+  spinner.stop()
   console.log(sizeString)
 }
 
@@ -41,7 +37,7 @@ const getAllFiles = function (dirPath, arrayOfFiles) {
 
 // @directoryPath - {string} Path of the directory where space needs to be found
 const getTotalSize = async (directoryPath) => {
-  const arrayOfFiles = await getAllFiles(directoryPath)
+  const arrayOfFiles = getAllFiles(directoryPath)
   let totalSize = 0
   arrayOfFiles.forEach(function (filePath) {
     totalSize += fs.statSync(filePath).size

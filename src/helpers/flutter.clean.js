@@ -48,7 +48,7 @@ export const runFlutterCleanOnMultipleFolders = async (files) => {
   // List of processes that need to be executed bu Listr
   let processList = []
 
-  await files.forEach(async (folderName) => {
+   files.forEach(async (folderName) => {
     // The relative path of the directory.
     let dirPath = path.join(workingDir, folderName)
 
