@@ -1,25 +1,26 @@
 'use strict'
 
-import path from 'path'
 import fs from 'fs'
 
-import { error, info, warn } from '../../utils/logger'
+import { error } from '../../utils/logger'
 import { showIntroduction } from '../../utils/intro'
 import { chooseFolderType } from '../../helpers/PROMPT.JS'
 import { flutterText, nodeJs } from '../../constants/strings'
-import { flutterClean } from '../../utils/flutter.clean'
+import {
+  runFlutterClean,
+  runFlutterCleanOnMultipleFolders,
+} from '../../utils/flutter.clean'
 
 const handleFlutter = async (files) => {
   if (files.includes('pubspec.yaml')) {
-    await flutterClean()
+    await runFlutterClean()
   } else {
-    // Todo: execute the flutter clean command in all files in this folder
+    await runFlutterCleanOnMultipleFolders(files)
   }
 }
 
 const handleNodejs = (files) => {
   if (files.includes('package.json')) {
-    console.log(process.cwd())
     // Todo: Delete node_modules
   } else {
     // Todo: node_modules
@@ -27,14 +28,18 @@ const handleNodejs = (files) => {
 }
 
 export const clean = async (folderName) => {
+  // Show app intro using figlet
   showIntroduction()
 
+  // variable to check if the folder is current working directory
   let isCurrentDir = false
+
+  // prompt to get folder type
   let { folderType } = await chooseFolderType()
 
+  // If the folderName is `.` then the directory is current working directory
   if (folderName === '.') {
     isCurrentDir = true
-    folderName = path.basename(process.cwd())
   }
 
   if (isCurrentDir) {
