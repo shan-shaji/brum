@@ -2,20 +2,14 @@
 
 const execa = require('execa')
 import Listr from 'listr'
+import Spinner from './spinner'
 
 // Runs flutter clean command in the current directory
-export const executeFlutterClean = async () => {
+export const flutterClean = async () => {
   const tasks = new Listr([
     {
       title: 'Running flutter clean',
-      task: async () => {
-        try {
-          await execa('flutter clean')
-        } catch (error) {
-          error('Failed to run flutter clean, Please try again')
-          throw Error(error)
-        }
-      },
+      task: async () => {},
     },
     {
       title: 'Completing task',
